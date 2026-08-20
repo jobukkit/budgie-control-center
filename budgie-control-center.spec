@@ -2,7 +2,7 @@
 
 Name:           budgie-control-center
 Version:        1.4.1
-Release:        2
+Release:        3
 Summary:        A fork of GNOME Control Center for the Budgie 10 Series
 Group:          Graphical desktop/Budgie
 License:        GPLv2+ and CC-BY-SA
@@ -35,11 +35,11 @@ BuildRequires:  pkgconfig(libnma)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(libwacom)
-BuildRequires:  pkgconfig(malcontent-0)
+#BuildRequires:  pkgconfig(malcontent-0)
 BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(pwquality)
@@ -96,7 +96,7 @@ Requires: networkmanager-wifi
 Requires: networkmanager-applet
 
 # For parental controls support
-Requires: malcontent
+#Requires: malcontent
 
 # For Show Details in the color panel
 Recommends: gnome-color-manager
@@ -116,7 +116,7 @@ A fork of GNOME Control Center for the Budgie 10 Series.
 %build
 %meson  \
         -Ddocumentation=true \
-        -Dmalcontent=true
+        -Dmalcontent=false
 #    -Ddark_mode_distributor_logo=%{_datadir}/pixmaps/system-logo-white.png \
 %meson_build
 
@@ -146,7 +146,6 @@ chrpath --delete %{buildroot}%{_bindir}/budgie-control-center
 %{_datadir}/metainfo/budgie-control-center.appdata.xml
 %{_datadir}/pixmaps/budgie-faces
 %{_datadir}/pixmaps/budgie-logo.png
-#{_datadir}/pkgconfig/budgie-keybindings.pc
 %{_datadir}/polkit-1/actions/org.buddiesofbudgie.controlcenter.*.policy
 %{_datadir}/polkit-1/rules.d/budgie-control-center.rules
 %{_datadir}/sounds/budgie/default/*/*.ogg
